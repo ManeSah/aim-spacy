@@ -15,18 +15,18 @@ Aim is the most advanced open-source self-hosted AI experiment / metadata compar
 <li class="has-line-data" data-line-start="22" data-line-end="23">hyper-parameters</li>
 <li class="has-line-data" data-line-start="23" data-line-end="25">displaCy visualizations</li>
 </ul>
-<p>More about Aim: <a href="https://github.com/aimhubio/aim">https://github.com/aimhubio/aim</a></p>
-<p class="has-line-data" data-line-start="27" data-line-end="28">More about spaCy: <a href="https://github.com/explosion/spaCy">https://github.com/explosion/spaCy</a></p>
+<p>More about Aim: <a href="https://github.com/aimhubio/aim" style="display: inline">https://github.com/aimhubio/aim</a></p>
+<p class="has-line-data" data-line-start="27" data-line-end="28">More about spaCy: <a href="https://github.com/explosion/spaCy" style="display: inline">https://github.com/explosion/spaCy</a></p>
 <h2 class="code-line" data-line-start=29 data-line-end=30><a id="Examples_29"></a>Examples</h2>
 <ul>
 <li class="has-line-data" data-line-start="31" data-line-end="33">A quick example on how to track metrics, hparams and displaCy outputs with AimLogger
 <ul>
-<li class="has-line-data" data-line-start="32" data-line-end="33"><a href="https://github.com/aimhubio/aim-spacy/tree/master/examples/training_demo">https://github.com/aimhubio/aim-spacy/tree/master/examples/training_demo</a></li>
+<li class="has-line-data" data-line-start="32" data-line-end="33"><a href="https://github.com/aimhubio/aim-spacy/tree/master/examples/training_demo" style="display: inline">https://github.com/aimhubio/aim-spacy/tree/master/examples/training_demo</a></li>
 </ul>
 </li>
 <li class="has-line-data" data-line-start="33" data-line-end="35">Example of tracking displaCy visualizations with AimDisplaCy
 <ul>
-<li class="has-line-data" data-line-start="34" data-line-end="35"><a href="https://github.com/aimhubio/aim-spacy/tree/master/examples/image_tracking_demo">https://github.com/aimhubio/aim-spacy/tree/master/examples/image_tracking_demo</a></li>
+<li class="has-line-data" data-line-start="34" data-line-end="35"><a href="https://github.com/aimhubio/aim-spacy/tree/master/examples/image_tracking_demo" style="display: inline">https://github.com/aimhubio/aim-spacy/tree/master/examples/image_tracking_demo</a></li>
 </ul>
 </li>
 </ul>
@@ -38,8 +38,8 @@ Aim is the most advanced open-source self-hosted AI experiment / metadata compar
 <h3 class="code-line" data-line-start=48 data-line-end=49><a id="2_Tracking_metrics_hparams_and_displacy_visualizations_48"></a>2. Tracking metrics, hparams and displacy visualizations</h3>
 <p class="has-line-data" data-line-start="51" data-line-end="53">&lt;details&gt;<br>
 &lt;summary&gt;1. Tracking with AimLogger&lt;/summary&gt;</p>
-<p class="has-line-data" data-line-start="54" data-line-end="55"><code>spacy.AimLogger.v1</code> allows the user to leverage <a href="https://aimstack.io/"><code>Aim</code></a> as the experiment tracker throughout the model development cycles. All of the training metrics will be tracked by the <code>Aim</code> through the training steps and can be easily accessed through Aim UI.</p>
-<p class="has-line-data" data-line-start="57" data-line-end="58">It is important to note that you can observe the changes in the metrics live throughout the training. Aim also supports tracking multiple experiments simultaneously. Aim will store all of the <a href="https://spacy.io/usage/training#config">training config</a> hyperparameters that are used during experimentation along with <a href="https://aimstack.readthedocs.io/en/latest/ui/pages/run_management.html#id7">system-related information</a> ranging from GPU/CPU usability to Disk IO. This comes in with an added benefit that you can search/filter across the experimentation rather granularly, using our pythonic search <a href="https://aimstack.readthedocs.io/en/latest/using/search.html?highlight=AimQL#searching">AimQL</a>, live from the UI. To access the Aim Logger one can simply add a config akin to this</p>
+<p class="has-line-data" data-line-start="54" data-line-end="55"><code>spacy.AimLogger.v1</code> allows the user to leverage <a href="https://aimstack.io/" style="display: inline"><code>Aim</code></a> as the experiment tracker throughout the model development cycles. All of the training metrics will be tracked by the <code>Aim</code> through the training steps and can be easily accessed through Aim UI.</p>
+<p class="has-line-data" data-line-start="57" data-line-end="58">It is important to note that you can observe the changes in the metrics live throughout the training. Aim also supports tracking multiple experiments simultaneously. Aim will store all of the <a href="https://spacy.io/usage/training#config" style="display: inline">training config</a> hyperparameters that are used during experimentation along with <a href="https://aimstack.readthedocs.io/en/latest/ui/pages/run_management.html#id7" style="display: inline">system-related information</a> ranging from GPU/CPU usability to Disk IO. This comes in with an added benefit that you can search/filter across the experimentation rather granularly, using our pythonic search <a href="https://aimstack.readthedocs.io/en/latest/using/search.html?highlight=AimQL#searching" style="display: inline">AimQL</a>, live from the UI. To access the Aim Logger one can simply add a config akin to this</p>
 <p class="has-line-data" data-line-start="60" data-line-end="61">Example config:</p>
 <pre><code class="has-line-data" data-line-start="63" data-line-end="68" class="language-ini">[training.logger]
 @loggers = "spacy.AimLogger.v1"
