@@ -1,0 +1,152 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>About Aim.md</title><style></style></head><body id="preview">
+<h1 class="code-line" data-line-start=3 data-line-end=4><a id="AimspaCy_3"></a>Aim-spaCy</h1>
+<p class="has-line-data" data-line-start="7" data-line-end="12"><a href="https://pypi.org/project/aim-spacy/"><img src="https://img.shields.io/pypi/v/aim-spacy?color=yellow" alt="PyPI Package"></a><br>
+<a href="https://pypi.org/project/aim-spacy/"><img src="https://img.shields.io/pypi/dw/aim-spacy?color=green" alt="PyPI Downloads"></a><br>
+<a href="https://pypi.org/project/aim-spacy/"><img src="https://img.shields.io/pypi/pyversions/aim-spacy" alt="PyPI - Python Version"></a><br>
+<a href="https://github.com/aimhubio/aim-spacy/issues"><img src="https://img.shields.io/github/issues/aimhubio/aim-spacy" alt="Issues"></a><br>
+<a href="https://opensource.org/licenses/Apache-2.0"><img src="https://img.shields.io/badge/License-Apache%202.0-orange.svg" alt="License"></a></p>
+<p class="has-line-data" data-line-start="14" data-line-end="15"><a href="https://aimstack.io/spacy">Aim-spaCy</a> is an <a href="https://github.com/aimhubio/aim">Aim</a>-based spaCy experiment tracker. Its mission is to help AI researchers compare their spaCy metadata dramatically faster at scale.</p>
+<h2 class="code-line" data-line-start=16 data-line-end=17><a id="About_16"></a>About</h2>
+<p class="has-line-data" data-line-start="17" data-line-end="19">When running spaCy for training and inference a variety of metadata gets generated (hyperparams, metrics, visualizations etc). The runs/inferences need to be compared to do the next iterations quickly.<br>
+Aim is the most advanced open-source self-hosted AI experiment / metadata comparison tool.</p>
+<p class="has-line-data" data-line-start="20" data-line-end="21">Aim-spaCy helps to easily collect, store and explore training logs for spaCy, including:</p>
+<ul>
+<li class="has-line-data" data-line-start="21" data-line-end="22">metrics</li>
+<li class="has-line-data" data-line-start="22" data-line-end="23">hyper-parameters</li>
+<li class="has-line-data" data-line-start="23" data-line-end="25">displaCy visualizations</li>
+</ul>
+<p class="has-line-data" data-line-start="25" data-line-end="26">More about Aim: <a href="https://github.com/aimhubio/aim">https://github.com/aimhubio/aim</a></p>
+<p class="has-line-data" data-line-start="27" data-line-end="28">More about spaCy: <a href="https://github.com/explosion/spaCy">https://github.com/explosion/spaCy</a></p>
+<h2 class="code-line" data-line-start=29 data-line-end=30><a id="Examples_29"></a>Examples</h2>
+<ul>
+<li class="has-line-data" data-line-start="31" data-line-end="33">A quick example on how to track metrics, hparams and displaCy outputs with AimLogger
+<ul>
+<li class="has-line-data" data-line-start="32" data-line-end="33"><a href="https://github.com/aimhubio/aim-spacy/tree/master/examples/training_demo">https://github.com/aimhubio/aim-spacy/tree/master/examples/training_demo</a></li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="33" data-line-end="35">Example of tracking displaCy visualizations with AimDisplaCy
+<ul>
+<li class="has-line-data" data-line-start="34" data-line-end="35"><a href="https://github.com/aimhubio/aim-spacy/tree/master/examples/image_tracking_demo">https://github.com/aimhubio/aim-spacy/tree/master/examples/image_tracking_demo</a></li>
+</ul>
+</li>
+</ul>
+<h2 class="code-line" data-line-start=38 data-line-end=39><a id="Getting_Started_38"></a>Getting Started</h2>
+<h3 class="code-line" data-line-start=40 data-line-end=41><a id="1_Installation_40"></a>1. Installation</h3>
+<p class="has-line-data" data-line-start="42" data-line-end="43">In order to use aim for experimentation tracking, you must install it onto your system.</p>
+<pre><code class="has-line-data" data-line-start="45" data-line-end="47">pip install aim-spacy
+</code></pre>
+<h3 class="code-line" data-line-start=48 data-line-end=49><a id="2_Tracking_metrics_hparams_and_displacy_visualizations_48"></a>2. Tracking metrics, hparams and displacy visualizations</h3>
+<p class="has-line-data" data-line-start="52" data-line-end="53">&lt;summary&gt;1. Tracking with AimLogger&lt;/summary&gt;</p>
+<p class="has-line-data" data-line-start="54" data-line-end="55"><code>spacy.AimLogger.v1</code> allows the user to leverage <a href="https://aimstack.io/"><code>Aim</code></a> as the experiment tracker throughout the model development cycles. All of the training metrics will be tracked by the <code>Aim</code> through the training steps and can be easily accessed through Aim UI.</p>
+<p class="has-line-data" data-line-start="57" data-line-end="58">It is important to note that you can observe the changes in the metrics live throughout the training. Aim also supports tracking multiple experiments simultaneously. Aim will store all of the <a href="https://spacy.io/usage/training#config">training config</a> hyperparameters that are used during experimentation along with <a href="https://aimstack.readthedocs.io/en/latest/ui/pages/run_management.html#id7">system-related information</a> ranging from GPU/CPU usability to Disk IO. This comes in with an added benefit that you can search/filter across the experimentation rather granularly, using our pythonic search <a href="https://aimstack.readthedocs.io/en/latest/using/search.html?highlight=AimQL#searching">AimQL</a>, live from the UI. To access the Aim Logger one can simply add a config akin to this</p>
+<p class="has-line-data" data-line-start="60" data-line-end="61">Example config:</p>
+<pre><code class="has-line-data" data-line-start="63" data-line-end="68" class="language-ini">[training.logger]
+@loggers = "spacy.AimLogger.v1"
+repo = "path/to/save/logs"
+experiment_name = "your_experiment_name"
+</code></pre>
+<p class="has-line-data" data-line-start="69" data-line-end="70">The complete overview of Aim Logger inputs looks like this.</p>
+<table class="table table-striped table-bordered">
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>repo</code></td>
+<td><code>str</code></td>
+<td>The path for saving the logs</td>
+</tr>
+<tr>
+<td><code>experiment_name</code></td>
+<td><code>str</code></td>
+<td>The name of the experiment to track(default: <code>None</code>, the experiment will be determined by hash).</td>
+</tr>
+<tr>
+<td><code>viz_path</code></td>
+<td><code>str</code></td>
+<td>The path of the dataset (in a .spacy format) that will be used for saving the visualisations during training. Usually, this is taken as the dev set (dev.spacy) For a standalone run, this option is not needed (default: <code>None</code>).</td>
+</tr>
+<tr>
+<td><code>model_log_interval</code></td>
+<td><code>int</code></td>
+<td>How often should the model log the experimentation results</td>
+</tr>
+<tr>
+<td><code>image_size</code></td>
+<td><code>str</code></td>
+<td>A string with a ‘,’ separation designating the height and width of the image that is going to be saved during the training</td>
+</tr>
+<tr>
+<td><code>experiment_type</code></td>
+<td><code>str</code></td>
+<td>This flag designates what kind of an experiment is currently being tracked. If ‘ner’ or ‘dep’ is specified then the tracker will also use the <code>viz_path</code> and <code>image_size</code> for tracking displacy outputs during training. For a standalone run, this option is not needed (default: <code>None</code>).</td>
+</tr>
+</tbody>
+</table>
+<ol start="2">
+<li class="has-line-data" data-line-start="80" data-line-end="82">Tracking in any python script</li>
+</ol>
+<p class="has-line-data" data-line-start="82" data-line-end="83">Track metrics and hparams</p>
+<pre><code class="has-line-data" data-line-start="84" data-line-end="100" class="language-py"><span class="hljs-keyword">from</span> aim <span class="hljs-keyword">import</span> Run
+
+run = Run()
+
+<span class="hljs-comment"># Save inputs, hparams or any other `key: value` pairs</span>
+run[<span class="hljs-string">'hparams'</span>] = {
+    <span class="hljs-string">'learning_rate'</span>: <span class="hljs-number">0.001</span>,
+    <span class="hljs-string">'batch_size'</span>: <span class="hljs-number">32</span>,
+}
+
+<span class="hljs-comment"># ...</span>
+<span class="hljs-keyword">for</span> step <span class="hljs-keyword">in</span> range(<span class="hljs-number">10</span>):
+    <span class="hljs-comment"># Log metrics to visualize performance</span>
+    run.track(step, name=<span class="hljs-string">'metric_name'</span>)
+<span class="hljs-comment"># ...</span>
+</code></pre>
+<p class="has-line-data" data-line-start="101" data-line-end="102">Track displacy visulizations</p>
+<pre><code class="has-line-data" data-line-start="103" data-line-end="123" class="language-py"><span class="hljs-keyword">from</span> aim_displacy <span class="hljs-keyword">import</span> AimDisplaCy
+<span class="hljs-keyword">from</span> aim <span class="hljs-keyword">import</span> Run
+
+aim_run = Run()
+
+aim_displacy = AimDisplaCy(image_size=(<span class="hljs-number">600</span>, <span class="hljs-number">200</span>))
+
+<span class="hljs-keyword">for</span> index, text <span class="hljs-keyword">in</span> tqdm(enumerate(data), total=len(data)):
+    doc = nlp(text)
+    aim_run.track(
+        aim_displacy(doc, style=<span class="hljs-string">'dep'</span>, caption=f<span class="hljs-string">'Dependecy for data: {index}'</span>),
+        name=<span class="hljs-string">'Parsing'</span>,
+        context={<span class="hljs-string">'type'</span>: <span class="hljs-string">'dependency'</span>}
+    )
+    aim_run.track(
+        aim_displacy(doc, style=<span class="hljs-string">'ent'</span>, caption=f<span class="hljs-string">'Entity for data: {index}'</span>),
+        name=<span class="hljs-string">'Parsing'</span>,
+        context={<span class="hljs-string">'type'</span>: <span class="hljs-string">'entity'</span>}
+    )
+</code></pre>
+<h3 class="code-line" data-line-start=126 data-line-end=127><a id="3_Browsing_results_with_Aim_UI_126"></a>3. Browsing results with Aim UI</h3>
+<p class="has-line-data" data-line-start="128" data-line-end="129">Execute the below command to run Aim UI:</p>
+<pre><code class="has-line-data" data-line-start="130" data-line-end="132" class="language-shell">aim up
+</code></pre>
+<p class="has-line-data" data-line-start="133" data-line-end="134">You should see the following output meaning Aim UI is up and running:</p>
+<pre><code class="has-line-data" data-line-start="135" data-line-end="139">Running Aim UI on repo `&lt;Repo#-5930451821203570655 path=/.aim read_only=None&gt;`
+Open http://127.0.0.1:43800
+Press Ctrl+C to exit
+</code></pre>
+<p class="has-line-data" data-line-start="140" data-line-end="141">Open your browser and navigate to <a href="http://127.0.0.1:43800">http://127.0.0.1:43800</a></p>
+<p class="has-line-data" data-line-start="142" data-line-end="143">You should be able to see the home page of Aim UI!</p>
+<p class="has-line-data" data-line-start="144" data-line-end="145"><img src="https://user-images.githubusercontent.com/8036160/165775219-35fb1e09-e2a9-4f26-a6f4-0cf5273d2ac8.png" alt="homescreen_img"></p>
+<p class="has-line-data" data-line-start="146" data-line-end="147">Using the full scale of <code>aim-spacy</code> integration it is possible to aggregate/group and filter your experiments with various levels of granularity</p>
+<p class="has-line-data" data-line-start="148" data-line-end="149"><img src="https://user-images.githubusercontent.com/8036160/165744936-424c96ce-fed2-4453-b903-7356dea0be0f.svg" alt=""> --&gt;</p>
+<p class="has-line-data" data-line-start="150" data-line-end="151"><img src="https://user-images.githubusercontent.com/8036160/165745270-231f6db5-6c43-4647-b226-30b22b8030f1.png" alt="grouped_img"></p>
+<p class="has-line-data" data-line-start="152" data-line-end="153">You can also filter using all the parametrs with <code>Aim</code>s pythonic search engine <code>AimQL</code></p>
+<p class="has-line-data" data-line-start="154" data-line-end="155"><img src="https://uploads-ssl.webflow.com/62558278c40852a7dfff6c09/62558278c408525151ff6c5e_2.png" alt="aimQL-img"></p>
+<p class="has-line-data" data-line-start="156" data-line-end="157">Tracking NER’s and dependecies during training is also integrated within the pipeline</p>
+<p class="has-line-data" data-line-start="158" data-line-end="159"><img src="https://uploads-ssl.webflow.com/623c6d08838e92013e0cc115/62596a317852acb967cbc2d2_2.png" alt="ner_dep_img"></p>
+<p class="has-line-data" data-line-start="161" data-line-end="162">Grouping images along various axis is also entirely possible</p>
+<p class="has-line-data" data-line-start="163" data-line-end="164"><img src="https://uploads-ssl.webflow.com/623c6d08838e92013e0cc115/62596a506525a64a2e7e7eae_4.png" alt="ner_img"></p>
+</body></html>
